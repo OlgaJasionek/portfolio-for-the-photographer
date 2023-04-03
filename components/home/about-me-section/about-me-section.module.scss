@@ -1,0 +1,37 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  width: 100%;
+  padding-bottom: 60px;
+  background-color: $main-light-beige-background-color;
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  align-content: space-between;
+}
+
+.text {
+  max-width: 50%;
+  padding: 40px;
+  background-color: $main-dark-beige-background-color;
+}
+
+.title {
+  font-weight: 400;
+  margin: 10px 0 20px 0;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.img {
+  width: 50%;
+  height: 400px;
+  background-image: url(../../../assets/img/home-me-photo.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

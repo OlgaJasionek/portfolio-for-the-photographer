@@ -1,0 +1,43 @@
+@import "./variables";
+
+// font sizes
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-normal {
+  font-size: $font-size-sm;
+}
+
+.text-l {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
+  font-size: $font-size-xl;
+}
+
+.container {
+  padding: 0 80px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  letter-spacing: 2px;
+  font-size: 32px;
+  font-weight: 400;
+  margin: 10px 0 20px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

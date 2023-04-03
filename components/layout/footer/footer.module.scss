@@ -1,0 +1,19 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  width: 100%;
+  background-color: $main-light-beige-background-color;
+  padding-bottom: 20px;
+}
+
+.content {
+  text-align: center;
+  opacity: 0.5;
+}
+
+.line {
+  border: 1px solid $main-dark-beige-font-color;
+  opacity: 0.5;
+  width: 100px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+
+.mark {
+  display: inline-block;
+  width: 4px;
+  height: 10px;
+  background-color: $dark-beige-element-color;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.text {
+  font-size: $font-size-sm;
+  opacity: 0.6;
+}

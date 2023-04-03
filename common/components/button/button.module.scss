@@ -1,0 +1,44 @@
+@import "../../../styles/variables";
+
+.btn {
+  padding: 14px 20px;
+  color: #7c6034;
+  border: none;
+  font-weight: 600;
+  background-color: transparent;
+  transition: background-color 0.7s;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: transparent;
+  letter-spacing: 1px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.text {
+  color: rgb(221, 215, 205);
+
+  &:hover {
+    background-color: #7c60347e;
+  }
+}
+
+.contained {
+  background-color: #dcccbc71;
+
+  &:hover {
+    background-color: #c7b8aa71;
+  }
+}
+
+.outline {
+  border: 1px solid #7c6034;
+
+  &:hover {
+    background-color: #dcccbc71;
+  }
+}

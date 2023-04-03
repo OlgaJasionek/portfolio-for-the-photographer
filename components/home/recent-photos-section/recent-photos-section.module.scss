@@ -1,0 +1,115 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker {
+  text-align: center;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem 0 2rem 0;
+  opacity: 0.6;
+  font-size: $font-size-sm;
+}
+
+.item {
+  position: relative;
+  margin: 0 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: $light-mixingraywithbeige-color;
+    content: "";
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+    transition: width 0.8s;
+  }
+
+  &:hover::before {
+    width: 100%;
+    transition: width 0.8s;
+  }
+
+  &:hover::after {
+    background-color: transparent;
+    width: 100%;
+  }
+}
+
+.photos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.photoWrapper {
+  height: 350px;
+  width: auto;
+  overflow: hidden;
+}
+
+.photo {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../../../assets/img/remek.jpg);
+  transition: 1.5s ease-in;
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.arrowIcon {
+  margin-left: 10px;
+}
+
+.active {
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: $light-mixingraywithbeige-color;
+    content: "";
+  }
+}

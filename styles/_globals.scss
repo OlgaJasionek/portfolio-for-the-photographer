@@ -1,0 +1,28 @@
+@import "./variables";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-family: "Forum";
+  color: $main-dark-beige-font-color;
+}
+
+html,
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: $main-off-white-background-color;
+}
+
+main {
+  // height: 100%;
+  width: 100%;
+}
+
+#__next {
+  height: 100%;
+}

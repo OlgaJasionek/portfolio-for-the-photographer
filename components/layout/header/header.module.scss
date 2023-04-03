@@ -1,0 +1,81 @@
+@import "../../../styles/variables";
+
+.header {
+  width: 100%;
+  padding: 20px 0 40px;
+  text-transform: uppercase;
+  background-color: #f7f2ec;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+
+  a {
+    position: relative;
+    margin: 0 10px 0 10px;
+  }
+}
+
+.linkUnderline {
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: rgba(189, 178, 166, 0.825);
+    content: "";
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+    transition: width 0.8s;
+  }
+
+  &:hover::before {
+    width: 100%;
+    transition: width 0.8s;
+  }
+
+  &:hover::after {
+    background-color: transparent;
+    width: 100%;
+  }
+}
+
+.socialMedia {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  a {
+    margin-right: 10px;
+  }
+}
+
+.active {
+  &::before,
+  &::after {
+    position: absolute;
+    bottom: -4px;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: rgba(189, 178, 166, 0.825);
+    content: "";
+  }
+}

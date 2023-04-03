@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+
+.wrapper {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  div {
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.image {
+  background-position: center;
+  background-size: cover;
+
+  &1 {
+    background-image: url(../../assets/img/aparat.jpg);
+  }
+
+  &2 {
+    background-image: url(../../assets/img/natalia4.jpg);
+  }
+}
+
+.image1 {
+}
+
+.image2 {
+}
+
+.text1 {
+  background-color: $main-dark-beige-background-color;
+}
+
+.text2 {
+  background-color: $main-light-beige-background-color;
+}
