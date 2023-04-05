@@ -16,11 +16,16 @@ body {
   overflow-x: hidden;
   height: 100%;
   background-color: $main-off-white-background-color;
+  font-size: $font-size-medium;
 }
 
 main {
   // height: 100%;
   width: 100%;
+}
+
+p {
+  line-height: 1.5;
 }
 
 #__next {

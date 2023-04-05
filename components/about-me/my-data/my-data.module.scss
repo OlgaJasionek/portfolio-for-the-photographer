@@ -1,0 +1,59 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentGrid {
+  padding-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  div {
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.image {
+  background-position: center;
+  background-size: cover;
+
+  &1 {
+    background-image: url(/img/aparat.jpg);
+  }
+
+  &2 {
+    background-image: url(/img/natalia4.jpg);
+  }
+}
+
+.text {
+  padding: 40px;
+
+  &1 {
+    background-color: $main-dark-beige-background-color;
+  }
+
+  &2 {
+    background-color: $main-light-beige-background-color;
+  }
+
+  .textContent {
+    padding: 20px 0;
+  }
+}

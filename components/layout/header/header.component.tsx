@@ -1,19 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
 import classnames from "classnames";
 import { useRouter } from "next/router";
-
-import Logo from "../../../assets/img/logo1.svg";
-import FacebookIcon from "../../../assets/icons/facebook.svg";
-import InstagramIcon from "../../../assets/icons/instagram.svg";
 
 import styles from "./header.module.scss";
 
 const navLinks = [
-  { name: "Home", active: false, id: 2, path: "/" },
-  { name: "Portfolio", active: false, id: 1, path: "/portfolio" },
-  { name: "Kontakt", active: false, id: 3, path: "/contact" },
-  { name: "O mnie", active: false, id: 4, path: "/about-me" },
+  { name: "Home", id: 2, path: "/" },
+  { name: "Portfolio", id: 1, path: "/portfolio" },
+  { name: "O mnie", id: 4, path: "/about-me" },
+  { name: "Oferta", id: 5, path: "/offer" },
+  { name: "Kontakt", id: 3, path: "/contact" },
 ];
 
 const Header = () => {
@@ -25,20 +21,20 @@ const Header = () => {
       <div className='container'>
         <div className={styles.wrapper}>
           <div className={styles.socialMedia}>
-            <Link href={"/"}>
-              <Image src={FacebookIcon} alt='facebook-icon' />
+            <Link href={"https://www.facebook.com/natalia.jasionek"}>
+              <img src='/icons/facebook.svg' alt='facebook-icon' />
             </Link>
-            <Link href={"/"}>
-              <Image
+            <Link href={"https://www.instagram.com/art_photography_by_nat/"}>
+              <img
                 className={styles.icon}
-                src={InstagramIcon}
+                src='/icons/instagram.svg'
                 alt='instagram-icon'
               />
             </Link>
           </div>
           <div>
             <Link href='/'>
-              <Image src={Logo} width='500' height='175' alt='logo' />
+              <img src='/img/logo1.svg' width='400' height='175' alt='logo' />
             </Link>
           </div>
           <nav>

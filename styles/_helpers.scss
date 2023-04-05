@@ -23,13 +23,17 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 576px) {
+    padding: 0 20px;
+  }
 }
 
 .title {
   letter-spacing: 2px;
   font-size: 32px;
   font-weight: 400;
-  margin: 10px 0 20px 0;
+  padding: 10px 0 20px 0;
 }
 
 .text-center {

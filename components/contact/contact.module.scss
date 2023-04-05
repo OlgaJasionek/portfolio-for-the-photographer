@@ -1,0 +1,25 @@
+@import "../.././styles/variables";
+
+.wrapper {
+  width: 100%;
+  padding: 40px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 2;
+}
+
+.icon {
+  padding: 5px;
+}

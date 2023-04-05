@@ -4,9 +4,6 @@ import Image from "next/image";
 
 import Marker from "@/common/components/marker/marker.component";
 import Button from "@/common/components/button/button.component";
-import ArrowIcon from "../../../assets/icons/arrow.svg";
-import image1 from "../../../assets/img/karo.jpg";
-import image2 from "../../../assets/img/olga.jpg";
 
 import styles from "./recent-photos-section.module.scss";
 
@@ -19,12 +16,12 @@ const filters = [
 ];
 
 const photos = [
-  { id: 1, imgUrl: "../../../assets/img/karo.jpg" },
-  { id: 2, imgUrl: "../../../assets/img/olga.jpg" },
-  { id: 3, imgUrl: "../../../assets/img/remek.jpg" },
-  { id: 4, imgUrl: "../../../assets/img/oliwia.jpg" },
-  { id: 5, imgUrl: image1 },
-  { id: 6, imgUrl: image2 },
+  { id: 1, imgUrl: "/img/karo.jpg" },
+  { id: 2, imgUrl: "/img/olga.jpg" },
+  { id: 3, imgUrl: "/img/remek.jpg" },
+  { id: 4, imgUrl: "/img/oliwia.jpg" },
+  { id: 5, imgUrl: "/img/oliwia.jpg" },
+  { id: 6, imgUrl: "/img/oliwia.jpg" },
 ];
 
 const RecentPhotosSection = () => {
@@ -61,9 +58,9 @@ const RecentPhotosSection = () => {
               {photos.map(photo => (
                 <div className={styles.photoWrapper} key={photo.id}>
                   <div
-                    // style={{
-                    //   backgroundImage: "url()",
-                    // }}
+                    style={{
+                      backgroundImage: `url('${photo.imgUrl}')`,
+                    }}
                     className={styles.photo}></div>
                 </div>
               ))}
@@ -71,9 +68,9 @@ const RecentPhotosSection = () => {
             <div className={styles.btn}>
               <Button theme='contained' onClick={() => {}}>
                 ZOBACZ MOJE PORTFOLIO{" "}
-                <Image
+                <img
                   className={styles.arrowIcon}
-                  src={ArrowIcon}
+                  src='/icons/arrow.svg'
                   alt='arrow icon'
                 />
               </Button>
