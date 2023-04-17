@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { useRouter } from "next/router";
 
 import Button from "@/common/components/button/button.component";
 import Marker from "@/common/components/marker/marker.component";
@@ -6,6 +7,8 @@ import Marker from "@/common/components/marker/marker.component";
 import styles from "./contact-section.module.scss";
 
 const ContactSection = () => {
+  const router = useRouter();
+
   return (
     <div>
       <div className={styles.wrapper}>
@@ -29,7 +32,11 @@ const ContactSection = () => {
             </div>
 
             <div className={styles.btn}>
-              <Button theme='contained' onClick={() => {}}>
+              <Button
+                theme='contained'
+                onClick={() => {
+                  router.push("/contact");
+                }}>
                 NAPISZ DO MNIE
               </Button>
             </div>

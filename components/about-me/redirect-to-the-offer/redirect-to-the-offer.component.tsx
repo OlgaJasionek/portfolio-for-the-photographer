@@ -1,7 +1,10 @@
 import Button from "@/common/components/button/button.component";
+import { useRouter } from "next/router";
 import styles from "./redirect-to-the-offer.module.scss";
 
 const RedirectToOffer = () => {
+  const router = useRouter();
+
   return (
     <div className={styles.wrapper}>
       <div className='container'>
@@ -12,7 +15,11 @@ const RedirectToOffer = () => {
             chciał zobaczyć ofertę i wybrać coś dla siebie. jest to bardzo ważne
             zdanie, trzeba się naprawdę postarać{" "}
           </p>
-          <Button theme={"contained"} onClick={() => {}}>
+          <Button
+            theme={"contained"}
+            onClick={() => {
+              router.push("/offer");
+            }}>
             Zobacz ofertę
           </Button>
         </div>

@@ -5,6 +5,7 @@
   color: #7c6034;
   border: none;
   font-weight: 600;
+  font-size: 0.8rem;
   background-color: transparent;
   transition: background-color 0.7s;
   cursor: pointer;
@@ -28,10 +29,11 @@
 }
 
 .contained {
-  background-color: #dcccbc71;
+  background-color: #6c452071;
+  color: white;
 
   &:hover {
-    background-color: #c7b8aa71;
+    background-color: #94633671;
   }
 }
 

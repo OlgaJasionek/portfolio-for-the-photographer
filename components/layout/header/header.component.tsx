@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import classnames from "classnames";
 import { useRouter } from "next/router";
@@ -12,7 +13,11 @@ const navLinks = [
   { name: "Kontakt", id: 3, path: "/contact" },
 ];
 
-const Header = () => {
+type Props = {
+  onOpenSideMenu: () => void;
+};
+
+const Header = ({ onOpenSideMenu }: Props) => {
   const router = useRouter();
   const pathName = router.pathname;
 
@@ -20,21 +25,29 @@ const Header = () => {
     <header className={styles.header}>
       <div className='container'>
         <div className={styles.wrapper}>
-          <div className={styles.socialMedia}>
-            <Link href={"https://www.facebook.com/natalia.jasionek"}>
-              <img src='/icons/facebook.svg' alt='facebook-icon' />
-            </Link>
-            <Link href={"https://www.instagram.com/art_photography_by_nat/"}>
-              <img
-                className={styles.icon}
-                src='/icons/instagram.svg'
-                alt='instagram-icon'
-              />
-            </Link>
+          <div className={styles.icons}>
+            <button className={styles.burger} onClick={onOpenSideMenu}>
+              <img src='/icons/burger.svg' alt='burger-button' />
+            </button>
+
+            <div className={styles.socialMedia}>
+              <Link href={"https://www.facebook.com/natalia.jasionek"}>
+                <img src='/icons/facebook.svg' alt='facebook-icon' />
+              </Link>
+              <Link href={"https://www.instagram.com/art_photography_by_nat/"}>
+                <img src='/icons/instagram.svg' alt='instagram-icon' />
+              </Link>
+            </div>
           </div>
           <div>
             <Link href='/'>
-              <img src='/img/logo1.svg' width='400' height='175' alt='logo' />
+              <Image
+                className={styles.logo}
+                src='/img/logo1.svg'
+                width='400'
+                height='175'
+                alt='logo'
+              />
             </Link>
           </div>
           <nav>

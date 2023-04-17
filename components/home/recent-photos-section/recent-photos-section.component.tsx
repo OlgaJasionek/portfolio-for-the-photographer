@@ -6,14 +6,7 @@ import Marker from "@/common/components/marker/marker.component";
 import Button from "@/common/components/button/button.component";
 
 import styles from "./recent-photos-section.module.scss";
-
-const filters = [
-  { title: "Wszystko" },
-  { title: "Portrety" },
-  { title: "Zdjęcia z drona" },
-  { title: "Sesje plenerowe" },
-  { title: "Natura" },
-];
+import { useRouter } from "next/router";
 
 const photos = [
   { id: 1, imgUrl: "/img/karo.jpg" },
@@ -25,7 +18,7 @@ const photos = [
 ];
 
 const RecentPhotosSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Wszystko");
+  const router = useRouter();
 
   return (
     <div>
@@ -39,20 +32,6 @@ const RecentPhotosSection = () => {
               <h2 className={classnames("title", "text-center")}>
                 NAJNOWSZE ZDJĘCIA
               </h2>
-              <nav>
-                <ul className={styles.categories}>
-                  {filters.map(filter => (
-                    <li
-                      onClick={() => setSelectedCategory(filter.title)}
-                      className={classnames(styles.item, {
-                        [styles.active]: filter.title === selectedCategory,
-                      })}
-                      key={filter.title}>
-                      {filter.title}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
             </div>
             <div className={styles.photos}>
               {photos.map(photo => (
@@ -66,8 +45,12 @@ const RecentPhotosSection = () => {
               ))}
             </div>
             <div className={styles.btn}>
-              <Button theme='contained' onClick={() => {}}>
-                ZOBACZ MOJE PORTFOLIO{" "}
+              <Button
+                theme='contained'
+                onClick={() => {
+                  router.push("/portfolio");
+                }}>
+                ZOBACZ MOJE PORTFOLIO
                 <img
                   className={styles.arrowIcon}
                   src='/icons/arrow.svg'

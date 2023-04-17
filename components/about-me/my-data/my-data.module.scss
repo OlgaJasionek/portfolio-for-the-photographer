@@ -35,10 +35,18 @@
 
   &1 {
     background-image: url(/img/aparat.jpg);
+
+    @media (max-width: 800px) {
+      grid-row: 3;
+    }
   }
 
   &2 {
     background-image: url(/img/natalia4.jpg);
+
+    @media (max-width: 800px) {
+      grid-row: 1;
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 import classnames from "classnames";
+import { useRouter } from "next/router";
 
 import Button from "@/common/components/button/button.component";
 import Marker from "@/common/components/marker/marker.component";
 
 import styles from "./about-me-section.module.scss";
-import { useRouter } from "next/router";
 
 const AboutMeSection = () => {
   const router = useRouter();
