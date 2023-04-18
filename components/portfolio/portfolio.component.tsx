@@ -1,6 +1,8 @@
 import axios from "axios";
 import classnames from "classnames";
 import { useEffect, useRef, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import styles from "./portfolio.module.scss";
 
 type Category = {
@@ -17,6 +19,7 @@ type Props = {
     total: number;
     items: Photo[];
     page: number;
+    perPage: number;
   };
 };
 
@@ -31,8 +34,10 @@ export const useIsMount = () => {
 
 const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
   const [categories] = useState<Category[]>(initCategories);
-  const [photos, setPhotos] = useState<Photo[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>("Wszystko");
+  const [page, setPage] = useState<number>(images.page);
+  const [photos, setPhotos] = useState<Photo[]>(images.items);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [hasMore, setHasMore] = useState<boolean>(true);
   const isMount = useIsMount();
 
   useEffect(() => {
@@ -45,14 +50,25 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
     setPhotos(images.items);
   }, [images]);
 
-  const getPhotos = async () => {
-    const resp = await axios.get(
-      "https://glorious-jade-whale.cyclic.app/api/images",
-      {
-        params: { category: selectedCategory },
-      }
-    );
-    setPhotos(resp.data.items);
+  const getPhotos = async (page?: number) => {
+    const resp = selectedCategory
+      ? await axios.get("https://glorious-jade-whale.cyclic.app/api/images", {
+          params: {
+            category: selectedCategory,
+            page: page ? page + 1 : images.page,
+          },
+        })
+      : await axios.get("https://glorious-jade-whale.cyclic.app/api/images", {
+          params: {
+            page: page ? page + 1 : images.page,
+          },
+        });
+    page
+      ? setPhotos(prev => [...prev, ...resp.data.items])
+      : setPhotos(resp.data.items);
+    page && setPage(resp.data.page);
+
+    photos.length === resp.data.total && setHasMore(false);
   };
 
   return (
@@ -74,17 +90,25 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
               ))}
             </ul>
           </nav>
-          <div className={styles.photos}>
-            {photos.map(photo => (
-              <div className={styles.photoWrapper} key={photo.url}>
-                <div
-                  style={{
-                    backgroundImage: `url('${photo.url}')`,
-                  }}
-                  className={styles.photo}></div>
-              </div>
-            ))}
-          </div>
+          <InfiniteScroll
+            next={() => {
+              getPhotos(page);
+            }}
+            dataLength={photos.length}
+            hasMore={hasMore}
+            loader={<p className={styles.scrollLoader}>Ładowanie...</p>}>
+            <div className={styles.photos}>
+              {photos.map(photo => (
+                <div className={styles.photoWrapper} key={photo.url}>
+                  <div
+                    style={{
+                      backgroundImage: `url('${photo.url}')`,
+                    }}
+                    className={styles.photo}></div>
+                </div>
+              ))}
+            </div>
+          </InfiniteScroll>
         </div>
       </div>
     </div>

@@ -20,16 +20,17 @@ const AboutMeSection = () => {
             </h1>
             <div className={styles.description}>
               <p>
-                Z tej strony Natalia — romantyczna dusza, która mocno wierzy w
-                miłość i siłę uczucia. Te elementy nadają sens naszemu
-                wyobrażeniu świata.
+                Na imię mi Natalia, aparat to mój klucz do chwytania chwili,
+                zdjęcia to cegiełki budujące mój wszechświat. Tym małym cudem
+                chciałabym podzielić się z Wami.
               </p>
             </div>
             <div className={styles.description}>
               <p>
-                Naszym największym źródłem inspiracji są ludzie oraz ich emocje,
-                a przez fotografię chcemy opowiadać piękne i szczere historie
-                zakochanych w sobie osób.
+                Pozwólcie mi uwiecznić najpiękniejsze momenty Waszego życia,
+                dajcie mi możliwość aby utrwalić je dla Was i zachować w
+                pięknych kadrach, abyście mogli się nimi dzielić i przeżywać
+                jeszcze raz, i jeszcze raz….
               </p>
             </div>
             <Button
