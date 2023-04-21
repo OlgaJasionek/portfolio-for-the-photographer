@@ -11,7 +11,7 @@ const MyData = () => {
           <div className={styles.contentGrid}>
             <div className={classnames(styles.image, styles.image1)}></div>
             <div className={classnames(styles.text, styles.text1)}>
-              <h2>Cześć jestem Natalia,</h2>
+              <h3>Cześć jestem Natalia</h3>
               <p className={styles.textContent}>
                 fotografia to moja pasja, która łączy wszystko co w życiu
                 kocham. Uwielbiam uwieczniać w niezapomnianych kadrach dzikość

@@ -1,17 +1,12 @@
-import axios from "axios";
+import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
+import ImageModal from "@/common/components/image-modal/image-modal.component";
+import { useIsMount } from "@/common/hooks/useIsMount";
+import { Category, Photo } from "@/common/types/api.types";
 import classnames from "classnames";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import styles from "./portfolio.module.scss";
-
-type Category = {
-  name: string;
-};
-
-type Photo = {
-  url: string;
-};
 
 type Props = {
   categories: Category[];
@@ -23,21 +18,18 @@ type Props = {
   };
 };
 
-export const useIsMount = () => {
-  const isMountRef = useRef(true);
-
-  useEffect(() => {
-    isMountRef.current = false;
-  }, []);
-  return isMountRef.current;
-};
-
 const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
   const [categories] = useState<Category[]>(initCategories);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
   const [page, setPage] = useState<number>(images.page);
   const [photos, setPhotos] = useState<Photo[]>(images.items);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo>();
   const [hasMore, setHasMore] = useState<boolean>(true);
+
+  const [openImageFullScreenModal, setOpenImageFullScreenModal] =
+    useState<boolean>(false);
+
   const isMount = useIsMount();
 
   useEffect(() => {
@@ -50,25 +42,20 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
     setPhotos(images.items);
   }, [images]);
 
-  const getPhotos = async (page?: number) => {
-    const resp = selectedCategory
-      ? await axios.get("https://glorious-jade-whale.cyclic.app/api/images", {
-          params: {
-            category: selectedCategory,
-            page: page ? page + 1 : images.page,
-          },
-        })
-      : await axios.get("https://glorious-jade-whale.cyclic.app/api/images", {
-          params: {
-            page: page ? page + 1 : images.page,
-          },
-        });
-    page
-      ? setPhotos(prev => [...prev, ...resp.data.items])
-      : setPhotos(resp.data.items);
-    page && setPage(resp.data.page);
+  const closeImageFullScreenModalHandler = () => {
+    setOpenImageFullScreenModal(false);
+  };
 
-    photos.length === resp.data.total && setHasMore(false);
+  const getPhotos = async () => {
+    const resp = selectedCategory
+      ? await getPhotosWithCategory(selectedCategory, page)
+      : await getAllPhotos(page);
+
+    const newPhotos = [...photos, ...resp.items];
+
+    setPhotos(newPhotos);
+    setPage(resp.page);
+    newPhotos.length === resp.total ? setHasMore(false) : setHasMore(true);
   };
 
   return (
@@ -80,7 +67,12 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
             <ul className={styles.categories}>
               {categories.map(filter => (
                 <li
-                  onClick={() => setSelectedCategory(filter.name)}
+                  onClick={() => {
+                    setSelectedCategory(filter.name),
+                      setPage(0),
+                      setPhotos([]),
+                      setHasMore(true);
+                  }}
                   className={classnames(styles.item, {
                     [styles.active]: filter.name === selectedCategory,
                   })}
@@ -92,17 +84,22 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
           </nav>
           <InfiniteScroll
             next={() => {
-              getPhotos(page);
+              getPhotos();
             }}
             dataLength={photos.length}
             hasMore={hasMore}
             loader={<p className={styles.scrollLoader}>Ładowanie...</p>}>
             <div className={styles.photos}>
               {photos.map(photo => (
-                <div className={styles.photoWrapper} key={photo.url}>
+                <div
+                  onClick={() => {
+                    setOpenImageFullScreenModal(true), setSelectedPhoto(photo);
+                  }}
+                  className={styles.photoWrapper}
+                  key={photo.formats.md}>
                   <div
                     style={{
-                      backgroundImage: `url('${photo.url}')`,
+                      backgroundImage: `url('${photo.formats.md}')`,
                     }}
                     className={styles.photo}></div>
                 </div>
@@ -110,6 +107,15 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
             </div>
           </InfiniteScroll>
         </div>
+        {openImageFullScreenModal && (
+          <ImageModal
+            selectedCategory={selectedCategory}
+            photo={selectedPhoto}
+            page={page}
+            images={photos}
+            onClose={closeImageFullScreenModalHandler}
+          />
+        )}
       </div>
     </div>
   );
