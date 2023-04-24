@@ -6,7 +6,7 @@ export const getPhotosWithCategory = (
   page: number
 ): Promise<{ items: Photo[]; page: number; total: number }> =>
   axios
-    .get("https://glorious-jade-whale.cyclic.app/api/images", {
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/images`, {
       params: {
         category: selectedCategory,
         page: page + 1,
@@ -18,7 +18,7 @@ export const getAllPhotos = (
   page: number
 ): Promise<{ items: Photo[]; page: number; total: number }> =>
   axios
-    .get("https://glorious-jade-whale.cyclic.app/api/images", {
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/images`, {
       params: {
         page: page + 1,
       },
