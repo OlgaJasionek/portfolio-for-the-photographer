@@ -96,8 +96,8 @@ const ImageModal = ({
           <Image
             src='/icons/close-white.svg'
             alt='close-button'
-            width={30}
-            height={30}
+            width={25}
+            height={25}
           />
         </button>
       </div>
@@ -108,8 +108,8 @@ const ImageModal = ({
           <Image
             src='/icons/left-next-page.svg'
             alt='next-page-button'
-            width={30}
-            height={30}
+            width={25}
+            height={25}
           />
         </button>
         <div className={classnames(styles.imageWrapper)}>
@@ -127,8 +127,8 @@ const ImageModal = ({
           <Image
             src='/icons/right-next-page.svg'
             alt='next-page-button'
-            width={20}
-            height={20}
+            width={25}
+            height={25}
           />
         </button>
       </div>

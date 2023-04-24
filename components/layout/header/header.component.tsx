@@ -30,8 +30,8 @@ const Header = ({ onOpenSideMenu }: Props) => {
               <Image
                 src='/icons/burger.svg'
                 alt='burger-button'
-                width={35}
-                height={35}
+                width={25}
+                height={25}
               />
             </button>
 
