@@ -1,5 +1,6 @@
 import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
-import ImageModal from "@/common/components/image-modal/image-modal.component";
+import ImageModal from "@/common/components/full-screen-image-modal/full-screen-image-modal.component";
+import { lockScroll } from "@/common/helpers-function/lock-scroll";
 import { useIsMount } from "@/common/hooks/useIsMount";
 import { Category, Photo } from "@/common/types/api.types";
 import classnames from "classnames";
@@ -24,7 +25,7 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
 
   const [page, setPage] = useState<number>(images.page);
   const [photos, setPhotos] = useState<Photo[]>(images.items);
-  const [selectedPhoto, setSelectedPhoto] = useState<Photo>();
+  const [selectedPhotoId, setSelectedPhotoId] = useState<string>("");
   const [hasMore, setHasMore] = useState<boolean>(true);
 
   const [openImageFullScreenModal, setOpenImageFullScreenModal] =
@@ -41,6 +42,11 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
   useEffect(() => {
     setPhotos(images.items);
   }, [images]);
+
+  useEffect(() => {
+    lockScroll(openImageFullScreenModal);
+  }),
+    [openImageFullScreenModal];
 
   const closeImageFullScreenModalHandler = () => {
     setOpenImageFullScreenModal(false);
@@ -93,7 +99,8 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
               {photos.map(photo => (
                 <div
                   onClick={() => {
-                    setOpenImageFullScreenModal(true), setSelectedPhoto(photo);
+                    setOpenImageFullScreenModal(true),
+                      setSelectedPhotoId(photo.id);
                   }}
                   className={styles.photoWrapper}
                   key={photo.formats.md}>
@@ -110,7 +117,7 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
         {openImageFullScreenModal && (
           <ImageModal
             selectedCategory={selectedCategory}
-            photo={selectedPhoto}
+            imageId={selectedPhotoId}
             page={page}
             images={photos}
             onClose={closeImageFullScreenModalHandler}

@@ -1,5 +1,6 @@
 import PortfolioComponent from "@/components/portfolio/portfolio.component";
 import axios from "axios";
+import Head from "next/head";
 
 export async function getStaticProps() {
   const categories = await axios
@@ -24,6 +25,15 @@ export async function getStaticProps() {
 const Portfolio = ({ images, categories }: any) => {
   return (
     <>
+      <Head>
+        <title>Portfolio - Fotograf Natalia Jasionek</title>
+        <meta
+          name='description'
+          content='Fotograf Białystok i okolice, Fotografia portretowa, sesje rodzinne, sesje plenerowe, fotografia okolicznościowa, fotografia produktowa,,  usługi fotograficzne'
+        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <PortfolioComponent categories={categories} images={images} />
     </>
   );

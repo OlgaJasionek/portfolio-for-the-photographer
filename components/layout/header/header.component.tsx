@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Home", id: 2, path: "/" },
   { name: "Portfolio", id: 1, path: "/portfolio" },
   { name: "O mnie", id: 4, path: "/about-me" },
-  { name: "Oferta", id: 5, path: "/offer" },
+  // { name: "Oferta", id: 5, path: "/offer" },
   { name: "Kontakt", id: 3, path: "/contact" },
 ];
 
@@ -27,15 +27,30 @@ const Header = ({ onOpenSideMenu }: Props) => {
         <div className={styles.wrapper}>
           <div className={styles.icons}>
             <button className={styles.burger} onClick={onOpenSideMenu}>
-              <img src='/icons/burger.svg' alt='burger-button' />
+              <Image
+                src='/icons/burger.svg'
+                alt='burger-button'
+                width={35}
+                height={35}
+              />
             </button>
 
             <div className={styles.socialMedia}>
               <Link href={"https://www.facebook.com/natalia.jasionek"}>
-                <img src='/icons/facebook.svg' alt='facebook-icon' />
+                <Image
+                  src='/icons/facebook.svg'
+                  alt='facebook-icon'
+                  width={25}
+                  height={25}
+                />
               </Link>
               <Link href={"https://www.instagram.com/art_photography_by_nat/"}>
-                <img src='/icons/instagram.svg' alt='instagram-icon' />
+                <Image
+                  src='/icons/instagram.svg'
+                  alt='instagram-icon'
+                  width={25}
+                  height={25}
+                />
               </Link>
             </div>
           </div>

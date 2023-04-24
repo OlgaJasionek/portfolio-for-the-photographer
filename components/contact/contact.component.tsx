@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./contact.module.scss";
@@ -21,17 +22,21 @@ const ContactComponent = () => {
             </li>
             <li>
               <Link href='https://www.instagram.com/art_photography_by_nat/'>
-                <img
+                <Image
                   className={styles.icon}
                   src='/icons/instagram.svg'
                   alt='instagram-icon'
+                  width={35}
+                  height={35}
                 />
               </Link>
               <Link href='https://www.facebook.com/natalia.jasionek'>
-                <img
+                <Image
                   className={styles.icon}
                   src='/icons/facebook.svg'
                   alt='facebook-icon'
+                  width={35}
+                  height={35}
                 />
               </Link>
             </li>
