@@ -10,9 +10,9 @@ import styles from "./side-menu.module.scss";
 const navLinks = [
   { name: "Home", id: 2, path: "/" },
   { name: "Portfolio", id: 1, path: "/portfolio" },
-  { name: "O mnie", id: 4, path: "/about-me" },
+  { name: "O mnie", id: 4, path: "/o-mnie" },
   // { name: "Oferta", id: 5, path: "/offer" },
-  { name: "Kontakt", id: 3, path: "/contact" },
+  { name: "Kontakt", id: 3, path: "/kontakt" },
 ];
 
 type Props = {

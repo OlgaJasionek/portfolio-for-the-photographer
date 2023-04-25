@@ -18,7 +18,7 @@ const RedirectToOffer = () => {
           <Button
             theme={"contained"}
             onClick={() => {
-              router.push("/offer");
+              router.push("/oferta");
             }}>
             Zobacz ofertę
           </Button>

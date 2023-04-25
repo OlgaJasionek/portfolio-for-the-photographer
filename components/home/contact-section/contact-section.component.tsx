@@ -35,7 +35,7 @@ const ContactSection = () => {
               <Button
                 theme='contained'
                 onClick={() => {
-                  router.push("/contact");
+                  router.push("/kontakt");
                 }}>
                 NAPISZ DO MNIE
               </Button>

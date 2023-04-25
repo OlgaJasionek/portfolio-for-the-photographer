@@ -36,7 +36,7 @@ const AboutMeSection = () => {
             <Button
               theme='contained'
               onClick={() => {
-                router.push("/about-me");
+                router.push("/o-mnie");
               }}>
               POZNAJ MNIE LEPIEJ
             </Button>

@@ -12,6 +12,11 @@ const nextConfig = {
         source: "/o-mnie",
         destination: "/about-me",
       },
+
+      {
+        source: "/oferta",
+        destination: "/offer",
+      },
     ];
   },
 };

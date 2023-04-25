@@ -8,9 +8,9 @@ import styles from "./header.module.scss";
 const navLinks = [
   { name: "Home", id: 2, path: "/" },
   { name: "Portfolio", id: 1, path: "/portfolio" },
-  { name: "O mnie", id: 4, path: "/about-me" },
-  // { name: "Oferta", id: 5, path: "/offer" },
-  { name: "Kontakt", id: 3, path: "/contact" },
+  { name: "O mnie", id: 4, path: "/o-mnie" },
+  // { name: "Oferta", id: 5, path: "/oferta" },
+  { name: "Kontakt", id: 3, path: "/kontakt" },
 ];
 
 type Props = {
@@ -36,7 +36,9 @@ const Header = ({ onOpenSideMenu }: Props) => {
             </button>
 
             <div className={styles.socialMedia}>
-              <Link href={"https://www.facebook.com/natalia.jasionek"}>
+              <Link
+                target='_blank'
+                href={"https://www.facebook.com/natalia.jasionek"}>
                 <Image
                   src='/icons/facebook.svg'
                   alt='facebook-icon'
@@ -44,7 +46,9 @@ const Header = ({ onOpenSideMenu }: Props) => {
                   height={25}
                 />
               </Link>
-              <Link href={"https://www.instagram.com/art_photography_by_nat/"}>
+              <Link
+                target='_blank'
+                href={"https://www.instagram.com/art_photography_by_nat/"}>
                 <Image
                   src='/icons/instagram.svg'
                   alt='instagram-icon'

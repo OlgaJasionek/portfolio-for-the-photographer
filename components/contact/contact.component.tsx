@@ -21,7 +21,9 @@ const ContactComponent = () => {
               <a href='tel:888-555-444'>888-555-444</a>
             </li>
             <li>
-              <Link href='https://www.instagram.com/art_photography_by_nat/'>
+              <Link
+                target='_blank'
+                href='https://www.instagram.com/art_photography_by_nat/'>
                 <Image
                   className={styles.icon}
                   src='/icons/instagram.svg'
@@ -30,7 +32,9 @@ const ContactComponent = () => {
                   height={35}
                 />
               </Link>
-              <Link href='https://www.facebook.com/natalia.jasionek'>
+              <Link
+                target='_blank'
+                href='https://www.facebook.com/natalia.jasionek'>
                 <Image
                   className={styles.icon}
                   src='/icons/facebook.svg'

@@ -1,13 +1,13 @@
 import classnames from "classnames";
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import Image from "next/image";
 
 import { Photo } from "@/common/types/api.types";
 import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
 import { useKeyDown } from "@/common/hooks/useKeyDown";
 
 import styles from "./full-screen-image-modal.module.scss";
-import Image from "next/image";
 
 type Props = {
   images: Photo[];
@@ -54,6 +54,11 @@ const ImageModal = ({
       const next = photos.find(
         (_, index) => index === photos.indexOf(selectedPhoto) + 1
       );
+
+      if (photos.indexOf(selectedPhoto) === photos.length - 1) {
+        setSelectedPhoto(photos[0]);
+      }
+
       next && setSelectedPhoto(next);
     }
   };
@@ -63,15 +68,22 @@ const ImageModal = ({
       const previous = photos.find(
         (_, index) => index === photos.indexOf(selectedPhoto) - 1
       );
+
+      if (selectedPhoto === photos[0]) {
+        setSelectedPhoto(photos[photos.length - 1]);
+      }
+
       previous && setSelectedPhoto(previous);
     }
   };
 
   const morePhotos = async () => {
-    if (selectedPhoto) {
-      if (photos.indexOf(selectedPhoto) === photos.length - 2 && hasMore) {
-        getPhotos();
-      }
+    if (
+      selectedPhoto &&
+      photos.indexOf(selectedPhoto) === photos.length - 2 &&
+      hasMore
+    ) {
+      getPhotos();
     }
   };
 
