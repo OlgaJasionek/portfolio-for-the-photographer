@@ -3,6 +3,8 @@ import RecentPhotosSection from "./recent-photos-section/recent-photos-section.c
 
 import ContactSection from "./contact-section/contact-section.component";
 
+import InstructionForCooperationSection from "./instruction-for-cooperation-section/instruction-for-cooperation.component";
+
 import styles from "./home.module.scss";
 
 const HomeComponent = () => {
@@ -10,6 +12,7 @@ const HomeComponent = () => {
     <>
       <AboutMeSection />
       <RecentPhotosSection />
+      <InstructionForCooperationSection />
       <ContactSection />
     </>
   );

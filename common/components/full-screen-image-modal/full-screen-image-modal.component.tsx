@@ -2,6 +2,7 @@ import classnames from "classnames";
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import { Photo } from "@/common/types/api.types";
 import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
@@ -128,11 +129,19 @@ const ImageModal = ({
         </button>
         <div className={classnames(styles.imageWrapper)}>
           {selectedPhoto && (
-            <img
+            <motion.img
               className={styles.image}
+              key={selectedPhoto?.formats.full}
               src={selectedPhoto?.formats.full}
-              alt='photo'
+              initial={{ x: 10, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -10, opacity: 0 }}
             />
+            // <img
+            //   className={styles.image}
+            //   src={selectedPhoto?.formats.full}
+            //   alt='photo'
+            // />
           )}
         </div>
         <button

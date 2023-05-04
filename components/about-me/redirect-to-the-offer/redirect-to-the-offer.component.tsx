@@ -19,7 +19,7 @@ const RedirectToOffer = () => {
           <Button
             theme={"contained"}
             onClick={() => {
-              router.push("/oferta");
+              router.push("/kontakt");
             }}>
             Zapytaj o ofertę
           </Button>
