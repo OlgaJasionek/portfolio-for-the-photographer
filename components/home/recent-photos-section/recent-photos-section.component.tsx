@@ -111,7 +111,7 @@ const RecentPhotosSection = () => {
                 ZOBACZ MOJE PORTFOLIO
                 <Image
                   className={styles.arrowIcon}
-                  src='/icons/arrow.svg'
+                  src='/icons/arrow-white.svg'
                   alt='arrow icon'
                   height={20}
                   width={20}

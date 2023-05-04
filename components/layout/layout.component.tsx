@@ -25,9 +25,7 @@ const Layout = ({ children }: Props) => {
     <div className={styles.wrapper}>
       <SideMenu isOpen={openSideMenu} onCloseSideMenu={closeSideMenuHandler} />
       <Header onOpenSideMenu={openSideMenuHandler} />
-      <div className={styles.main}>
-        <main>{children}</main>
-      </div>
+      <main className={styles.main}>{children}</main>
       <Footer />
     </div>
   );

@@ -20,9 +20,8 @@ const AboutMeSection = () => {
             </h1>
             <div className={styles.description}>
               <p>
-                Na imię mi Natalia, aparat to mój klucz do chwytania chwili,
-                zdjęcia to cegiełki budujące mój wszechświat. Tym małym cudem
-                chciałabym podzielić się z Wami.
+                Mam na imię Natalia, aparatem chwytam chwile, które budują moje
+                wspomnienia. Tym chciałabym podzielić się z Wami.
               </p>
             </div>
             <div className={styles.description}>
@@ -30,7 +29,7 @@ const AboutMeSection = () => {
                 Pozwólcie mi uwiecznić najpiękniejsze momenty Waszego życia,
                 dajcie mi możliwość aby utrwalić je dla Was i zachować w
                 pięknych kadrach, abyście mogli się nimi dzielić i przeżywać
-                jeszcze raz, i jeszcze raz….
+                jeszcze raz.
               </p>
             </div>
             <Button

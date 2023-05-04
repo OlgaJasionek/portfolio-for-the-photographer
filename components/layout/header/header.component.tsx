@@ -3,14 +3,17 @@ import Link from "next/link";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 
+import { PathsName } from "@/common/types/paths.enum";
+import { pathsNameTranslations } from "@/common/helpers/paths.translations";
+
 import styles from "./header.module.scss";
 
 const navLinks = [
-  { name: "Home", id: 2, path: "/" },
-  { name: "Portfolio", id: 1, path: "/portfolio" },
-  { name: "O mnie", id: 4, path: "/o-mnie" },
+  { name: "Home", id: 1, path: PathsName.Home },
+  { name: "Portfolio", id: 2, path: PathsName.Portfolio },
+  { name: "O mnie", id: 3, path: PathsName.AboutMe },
+  { name: "Kontakt", id: 4, path: PathsName.Contact },
   // { name: "Oferta", id: 5, path: "/oferta" },
-  { name: "Kontakt", id: 3, path: "/kontakt" },
 ];
 
 type Props = {
@@ -19,7 +22,7 @@ type Props = {
 
 const Header = ({ onOpenSideMenu }: Props) => {
   const router = useRouter();
-  const pathName = router.pathname;
+  const pathName: string = router.pathname;
 
   return (
     <header className={styles.header}>
@@ -75,7 +78,8 @@ const Header = ({ onOpenSideMenu }: Props) => {
                 <li key={link.id}>
                   <Link
                     className={classnames(styles.linkUnderline, {
-                      [styles.active]: link.path === pathName,
+                      [styles.active]:
+                        pathsNameTranslations[link.path] === pathName,
                     })}
                     href={link.path}>
                     {link.name}

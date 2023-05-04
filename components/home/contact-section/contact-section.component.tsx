@@ -18,16 +18,14 @@ const ContactSection = () => {
               <Marker text='KONTAKT' />
             </div>
             <h2 className={classnames("title", "text-center")}>
-              WASZA HISTORIA JEST WYJĄTKOWA
+              POZWÓL MI ZACHOWAĆ TWOJE WSPOMNIENIA
             </h2>
             <div className={styles.text}>
               <p>
-                W naszej pracy nie znajdziecie nieszczerych chwil i niezręcznych
-                uśmiechów. Dlaczego? Ponieważ później spojrzycie na te zdjęcia i
-                nie rozpoznacie siebie. Dlatego skoncentrujemy się na Was i
-                Waszej miłości. Prawdziwej. Surowej. A jeśli tak jak my
-                jesteście marzycielami i szukacie czegoś prawdziwie
-                autentycznego, ponadczasowego i artystycznego. Zróbmy to!
+                Napisz do mnie, jeśli chcesz poznać szczegóły i masz pytania
+                odnośnie sesji. Jestem tu dla Ciebie - chętnie odpowiem na
+                wszelkie pytania oraz prześlę pełną ofertę. Skontaktuj się ze
+                mną 🙂
               </p>
             </div>
 

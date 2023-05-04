@@ -9,18 +9,19 @@ const RedirectToOffer = () => {
     <div className={styles.wrapper}>
       <div className='container'>
         <div className={styles.content}>
-          <h3 className='title'>ZOBACZ OFERTĘ!</h3>
+          <h3 className='title'>ZAPYTAJ O OFERTĘ!</h3>
           <p className={styles.text}>
-            Tu będzie jakiś bardzo zachęcający tekst, taki że każdy będzie
-            chciał zobaczyć ofertę i wybrać coś dla siebie. jest to bardzo ważne
-            zdanie, trzeba się naprawdę postarać{" "}
+            Żeby przedstawić Wam najlepszą ofertę, chcę poznać Wasze
+            oczekiwania. Pełną ofertę przedstawię wam w prywatnym mailu.
+            Zachęcam też do rozpisania się w szczegółach, im więcej będę o Was
+            wiedzieć, tym lepszą ofertę będę mogła Wam zaproponować.
           </p>
           <Button
             theme={"contained"}
             onClick={() => {
               router.push("/oferta");
             }}>
-            Zobacz ofertę
+            Zapytaj o ofertę
           </Button>
         </div>
       </div>

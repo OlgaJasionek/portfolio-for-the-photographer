@@ -89,9 +89,11 @@ const ImageModal = ({
 
   const getPhotos = async () => {
     if (currentPage) {
-      const resp = selectedCategory
-        ? await getPhotosWithCategory(selectedCategory, currentPage)
-        : await getAllPhotos(currentPage);
+      const resp =
+        selectedCategory && selectedCategory !== "Wszystkie"
+          ? await getPhotosWithCategory(selectedCategory, currentPage)
+          : await getAllPhotos(currentPage);
+
       const newPhotos = [...photos, ...resp.items];
 
       setPhotos(newPhotos);

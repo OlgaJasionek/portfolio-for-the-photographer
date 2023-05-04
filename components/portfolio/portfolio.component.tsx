@@ -1,11 +1,12 @@
+import classnames from "classnames";
+import { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
 import ImageModal from "@/common/components/full-screen-image-modal/full-screen-image-modal.component";
 import { lockScroll } from "@/common/helpers-function/lock-scroll";
 import { useIsMount } from "@/common/hooks/useIsMount";
 import { Category, Photo } from "@/common/types/api.types";
-import classnames from "classnames";
-import { useEffect, useState } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 import styles from "./portfolio.module.scss";
 
@@ -20,8 +21,11 @@ type Props = {
 };
 
 const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
-  const [categories] = useState<Category[]>(initCategories);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [categories] = useState<Category[]>([
+    { name: "Wszystkie" },
+    ...initCategories,
+  ]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
 
   const [page, setPage] = useState<number>(images.page);
   const [photos, setPhotos] = useState<Photo[]>(images.items);
@@ -40,10 +44,6 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
   }, [selectedCategory]);
 
   useEffect(() => {
-    setPhotos(images.items);
-  }, [images]);
-
-  useEffect(() => {
     lockScroll(openImageFullScreenModal);
   }),
     [openImageFullScreenModal];
@@ -52,13 +52,19 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
     setOpenImageFullScreenModal(false);
   };
 
-  const getPhotos = async () => {
-    const resp = selectedCategory
-      ? await getPhotosWithCategory(selectedCategory, page)
-      : await getAllPhotos(page);
+  const changeCategory = (category: string) => {
+    setSelectedCategory(category);
+    setHasMore(true);
+    setPage(0);
+  };
 
-    const newPhotos = [...photos, ...resp.items];
+  const getPhotos = async (scroll?: boolean) => {
+    const resp =
+      selectedCategory && selectedCategory !== "Wszystkie"
+        ? await getPhotosWithCategory(selectedCategory, page)
+        : await getAllPhotos(page);
 
+    const newPhotos = scroll ? [...photos, ...resp.items] : resp.items;
     setPhotos(newPhotos);
     setPage(resp.page);
     newPhotos.length === resp.total ? setHasMore(false) : setHasMore(true);
@@ -73,12 +79,7 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
             <ul className={styles.categories}>
               {categories.map(filter => (
                 <li
-                  onClick={() => {
-                    setSelectedCategory(filter.name),
-                      setPage(0),
-                      setPhotos([]),
-                      setHasMore(true);
-                  }}
+                  onClick={() => changeCategory(filter.name)}
                   className={classnames(styles.item, {
                     [styles.active]: filter.name === selectedCategory,
                   })}
@@ -90,7 +91,7 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
           </nav>
           <InfiniteScroll
             next={() => {
-              getPhotos();
+              getPhotos(true);
             }}
             dataLength={photos.length}
             hasMore={hasMore}
