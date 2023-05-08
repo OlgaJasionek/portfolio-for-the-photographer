@@ -1,7 +1,8 @@
 import classnames from "classnames";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import Marker from "@/common/components/marker/marker.component";
 import Button from "@/common/components/button/button.component";
@@ -59,6 +60,7 @@ const RecentPhotosSection = () => {
   const [openImageFullScreenModal, setOpenImageFullScreenModal] =
     useState<boolean>(false);
   const router = useRouter();
+  const scrollRef = useRef(null);
 
   const closeImageFullScreenModalHandler = () => {
     setOpenImageFullScreenModal(false);
@@ -85,9 +87,25 @@ const RecentPhotosSection = () => {
                 NAJNOWSZE ZDJĘCIA
               </h2>
             </div>
-            <div className={styles.photos}>
-              {images.map(image => (
-                <div
+            <motion.div
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ once: true }}
+              variants={{
+                visible: {
+                  opacity: 1,
+                  transition: { when: "beforeChildren", staggerChildren: 0.15 },
+                },
+                hidden: { opacity: 0, transition: { when: "afterChildren" } },
+              }}
+              className={styles.photos}>
+              {images.map((image, index) => (
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1 },
+                    hidden: { opacity: 0 },
+                  }}
+                  transition={{ duration: 1 }}
                   onClick={() => {
                     setOpenImageFullScreenModal(true);
                     setSelectedImageId(image.id);
@@ -99,9 +117,9 @@ const RecentPhotosSection = () => {
                       backgroundImage: `url('${image.formats.md}')`,
                     }}
                     className={styles.photo}></div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
             <div className={styles.btn}>
               <Button
                 theme='contained'

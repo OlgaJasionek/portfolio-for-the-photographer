@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { Photo } from "@/common/types/api.types";
@@ -9,6 +8,7 @@ import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
 import { useKeyDown } from "@/common/hooks/useKeyDown";
 
 import styles from "./full-screen-image-modal.module.scss";
+import IconButton from "../icon-button/icon-button.component";
 
 type Props = {
   images: Photo[];
@@ -107,53 +107,48 @@ const ImageModal = ({
   return ReactDOM.createPortal(
     <div className={styles.wrapper}>
       <div className={styles.action}>
-        <button className={styles.closeBtn} onClick={onClose}>
-          <Image
-            src='/icons/close-white.svg'
-            alt='close-button'
-            width={25}
-            height={25}
-          />
-        </button>
+        <IconButton
+          onClick={onClose}
+          src='/icons/close-white.svg'
+          alt='close-icon'
+          width={20}
+          height={20}
+          padding='20px'
+        />
       </div>
       <div className={classnames(styles.content)}>
-        <button
-          onClick={previousImage}
-          className={classnames(styles.nextPageBtn, styles.leftSide)}>
-          <Image
+        <div className={classnames(styles.nextPageBtn, styles.leftSide)}>
+          <IconButton
+            onClick={previousImage}
             src='/icons/left-next-page.svg'
             alt='next-page-button'
             width={25}
             height={25}
+            padding='100px 0px'
           />
-        </button>
+        </div>
         <div className={classnames(styles.imageWrapper)}>
           {selectedPhoto && (
             <motion.img
               className={styles.image}
-              key={selectedPhoto?.formats.full}
+              key={selectedPhoto?.id}
               src={selectedPhoto?.formats.full}
-              initial={{ x: 10, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -10, opacity: 0 }}
+              initial={{ opacity: 0.3 }}
+              animate={{ opacity: 1 }}
+              transition={{ bounce: 0, type: "spring", duration: 1 }}
             />
-            // <img
-            //   className={styles.image}
-            //   src={selectedPhoto?.formats.full}
-            //   alt='photo'
-            // />
           )}
         </div>
-        <button
-          onClick={nextImage}
-          className={classnames(styles.nextPageBtn, styles.rightSide)}>
-          <Image
+        <div className={classnames(styles.nextPageBtn, styles.rightSide)}>
+          <IconButton
+            onClick={nextImage}
             src='/icons/right-next-page.svg'
             alt='next-page-button'
             width={25}
             height={25}
+            padding='100px 0px'
           />
-        </button>
+        </div>
       </div>
     </div>,
 

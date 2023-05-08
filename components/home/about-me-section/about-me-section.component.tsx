@@ -6,25 +6,23 @@ import Button from "@/common/components/button/button.component";
 import Marker from "@/common/components/marker/marker.component";
 
 import styles from "./about-me-section.module.scss";
-import { useRef } from "react";
 
 const AboutMeSection = () => {
   const router = useRouter();
-  const scrollRef = useRef(null);
 
   return (
     <div className={styles.wrapper}>
       <div className='container'>
-        <div ref={scrollRef}>
+        <div className={styles.content}>
           <motion.div
             className={styles.content}
-            initial={{ y: 400, opacity: 0 }}
+            initial={{ y: 200, opacity: 0.2 }}
             whileInView={{
               y: 0,
               opacity: 1,
-              transition: { duration: 1, bounce: 0.1, type: "spring" },
+              transition: { duration: 1.5, bounce: 0.1, type: "spring" },
             }}
-            viewport={{ root: scrollRef }}>
+            viewport={{ once: true }}>
             <div className={styles.text}>
               <Marker text='O MNIE' />
               <h1 className={classnames(styles.title, "text-xl")}>

@@ -1,9 +1,10 @@
 import classnames from "classnames";
+import Image from "next/image";
 
 import Marker from "@/common/components/marker/marker.component";
+import { motion } from "framer-motion";
 
 import styles from "./instruction-for-cooperation.module.scss";
-import Image from "next/image";
 
 const instructionSteps = [
   {
@@ -38,9 +39,27 @@ const InstructionForCooperationSection = () => {
             <h2 className={classnames("title", "text-center")}>
               JAK ROZPOCZĄĆ WSPÓŁPRACĘ?
             </h2>
-            <div className={styles.instructionSteps}>
+            <motion.div
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ once: true }}
+              variants={{
+                visible: {
+                  opacity: 1,
+                  transition: { when: "beforeChildren", staggerChildren: 0.3 },
+                },
+                hidden: { opacity: 0, transition: { when: "afterChildren" } },
+              }}
+              className={styles.instructionSteps}>
               {instructionSteps.map(step => (
-                <div className={styles.step} key={step.number}>
+                <motion.div
+                  variants={{
+                    visible: { opacity: 1 },
+                    hidden: { opacity: 0 },
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className={styles.step}
+                  key={step.number}>
                   <div className={styles.icon}>
                     <Image
                       key={step.icon}
@@ -52,9 +71,9 @@ const InstructionForCooperationSection = () => {
                   </div>
                   <h4 className={styles.name}>{step.header}</h4>
                   <span className={styles.text}>{step.text}</span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

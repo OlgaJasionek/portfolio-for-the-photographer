@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { motion } from "framer-motion";
 
 import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
 import ImageModal from "@/common/components/full-screen-image-modal/full-screen-image-modal.component";
@@ -67,7 +68,7 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
     const newPhotos = scroll ? [...photos, ...resp.items] : resp.items;
     setPhotos(newPhotos);
     setPage(resp.page);
-    newPhotos.length === resp.total ? setHasMore(false) : setHasMore(true);
+    setHasMore(newPhotos.length !== resp.total);
   };
 
   return (
@@ -98,19 +99,40 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
             loader={<p className={styles.scrollLoader}>Ładowanie...</p>}>
             <div className={styles.photos}>
               {photos.map(photo => (
-                <div
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        when: "beforeChildren",
+                        staggerChildren: 0.2,
+                      },
+                    },
+                    hidden: {
+                      opacity: 0,
+                      transition: { when: "afterChildren" },
+                    },
+                  }}
+                  transition={{ duration: 0.3 }}
                   onClick={() => {
                     setOpenImageFullScreenModal(true),
                       setSelectedPhotoId(photo.id);
                   }}
                   className={styles.photoWrapper}
                   key={photo.formats.md}>
-                  <div
+                  <motion.div
+                    variants={{
+                      visible: { opacity: 1 },
+                      hidden: { opacity: 0 },
+                    }}
+                    transition={{ duration: 0.3 }}
                     style={{
                       backgroundImage: `url('${photo.formats.md}')`,
                     }}
-                    className={styles.photo}></div>
-                </div>
+                    className={styles.photo}></motion.div>
+                </motion.div>
               ))}
             </div>
           </InfiniteScroll>
