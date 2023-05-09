@@ -1,3 +1,4 @@
+import IconButton from "@/common/components/icon-button/icon-button.component";
 import { lockScroll } from "@/common/helpers-function/lock-scroll";
 import classnames from "classnames";
 import Image from "next/image";
@@ -11,7 +12,7 @@ const navLinks = [
   { name: "Home", id: 2, path: "/" },
   { name: "Portfolio", id: 1, path: "/portfolio" },
   { name: "O mnie", id: 4, path: "/o-mnie" },
-  // { name: "Oferta", id: 5, path: "/offer" },
+  // { name: "Oferta", id: 5, path: "/offer" },//TODO: PAGE IN PROGRESS
   { name: "Kontakt", id: 3, path: "/kontakt" },
 ];
 
@@ -34,14 +35,14 @@ const SideMenu = ({ isOpen, onCloseSideMenu }: Props) => {
         [styles["wrapper--visible"]]: isOpen,
       })}>
       <div className={styles.btn}>
-        <button className={styles.close} onClick={onCloseSideMenu}>
-          <Image
-            src='/icons/close.svg'
-            alt='close-button'
-            width={20}
-            height={20}
-          />
-        </button>
+        <IconButton
+          onClick={onCloseSideMenu}
+          alt='close-icon'
+          src='/icons/close.svg'
+          width={20}
+          height={20}
+          padding='20px'
+        />
       </div>
       <nav className={styles.nav}>
         <ul className={styles.list}>

@@ -7,6 +7,7 @@ import { PathsName } from "@/common/types/paths.enum";
 import { pathsNameTranslations } from "@/common/helpers/paths.translations";
 
 import styles from "./header.module.scss";
+import IconButton from "@/common/components/icon-button/icon-button.component";
 
 const navLinks = [
   { name: "Home", id: 1, path: PathsName.Home },
@@ -29,14 +30,16 @@ const Header = ({ onOpenSideMenu }: Props) => {
       <div className='container'>
         <div className={styles.wrapper}>
           <div className={styles.icons}>
-            <button className={styles.burger} onClick={onOpenSideMenu}>
-              <Image
-                src='/icons/burger.svg'
-                alt='burger-button'
+            <div className={styles.burger}>
+              <IconButton
+                onClick={onOpenSideMenu}
                 width={25}
                 height={25}
+                src='/icons/burger.svg'
+                alt='burger-icon'
+                padding='0'
               />
-            </button>
+            </div>
 
             <div className={styles.socialMedia}>
               <Link
