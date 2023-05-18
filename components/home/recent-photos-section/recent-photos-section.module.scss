@@ -3,6 +3,9 @@
 .wrapper {
   width: 100%;
   padding: 40px 0;
+  position: relative;
+  z-index: 1;
+  background-color: $main-off-white-background-color;
 }
 
 .content {

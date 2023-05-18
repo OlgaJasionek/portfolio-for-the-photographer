@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import Image from "next/image";
 
-import Marker from "@/common/components/marker/marker.component";
+import Subtitle from "@/common/components/subtitle/subtitle.component";
 import { motion } from "framer-motion";
 
 import styles from "./instruction-for-cooperation.module.scss";
@@ -34,7 +34,7 @@ const InstructionForCooperationSection = () => {
         <div className='container'>
           <div className={styles.content}>
             <div className={styles.marker}>
-              <Marker text='WSPÓŁPRACA' />
+              <Subtitle text='WSPÓŁPRACA' />
             </div>
             <h2 className={classnames("title", "text-center")}>
               JAK ROZPOCZĄĆ WSPÓŁPRACĘ?

@@ -34,7 +34,7 @@
   background-size: cover;
 
   &1 {
-    background-image: url(/img/aparat.jpg);
+    background-image: url(/img/aparat.webp);
 
     @media (max-width: 800px) {
       grid-row: 3;
@@ -42,7 +42,7 @@
   }
 
   &2 {
-    background-image: url(/img/natalia4.jpg);
+    background-image: url(/img/natalia4.webp);
 
     @media (max-width: 800px) {
       grid-row: 1;

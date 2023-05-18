@@ -10,15 +10,17 @@ const ContactComponent = () => {
         <div className={styles.content}>
           <h2 className='title'>KONTAKT</h2>
           <ul className={styles.list}>
-            <li>Natalia Jasionek</li>
-            <li>Białystok i okolice</li>
+            <li className={styles.personalData}>
+              <span>Natalia Jasionek</span>
+              <span>Białystok i okolice</span>
+            </li>
             <li>
               <a href='mailto:nataliajasionekphotography@gmail.com'>
                 nataliajasionekphotography@gmail.com
               </a>
             </li>
             <li>
-              <a href='tel:888-555-444'>888-555-444</a>
+              <a href='tel:788 516 786'>788 516 786</a>
             </li>
             <li>
               <Link

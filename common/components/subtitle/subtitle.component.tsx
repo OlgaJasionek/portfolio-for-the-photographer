@@ -1,10 +1,10 @@
-import styles from "./marker.module.scss";
+import styles from "./subtitle.module.scss";
 
 type Props = {
   text: string;
 };
 
-const Marker = ({ text }: Props) => {
+const Subtitle = ({ text }: Props) => {
   return (
     <div>
       <span className={styles.mark}></span>
@@ -13,4 +13,4 @@ const Marker = ({ text }: Props) => {
   );
 };
 
-export default Marker;
+export default Subtitle;

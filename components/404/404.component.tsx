@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import styles from "./404.module.scss";
 
-const FourOhFourComponent = () => {
+const NotFoundComponent = () => {
   return (
     <div className={styles.wrapper}>
       <div className='container'>
@@ -26,4 +26,4 @@ const FourOhFourComponent = () => {
   );
 };
 
-export default FourOhFourComponent;
+export default NotFoundComponent;

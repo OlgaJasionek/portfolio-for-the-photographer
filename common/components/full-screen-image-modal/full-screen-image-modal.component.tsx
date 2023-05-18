@@ -33,16 +33,16 @@ const ImageModal = ({
   const [hasMore, setHasMore] = useState<boolean>(true);
 
   useEffect(() => {
-    morePhotos();
+    getMorePhotos();
   }, [selectedPhoto]);
 
   useKeyDown(e => {
     if (e.code === "ArrowRight") {
-      nextImage();
+      nextImageHandler();
     }
 
     if (e.code === "ArrowLeft") {
-      previousImage();
+      previousImageHandler();
     }
 
     if (e.code === "Escape") {
@@ -50,7 +50,7 @@ const ImageModal = ({
     }
   });
 
-  const nextImage = () => {
+  const nextImageHandler = () => {
     if (selectedPhoto) {
       const next = photos.find(
         (_, index) => index === photos.indexOf(selectedPhoto) + 1
@@ -64,7 +64,7 @@ const ImageModal = ({
     }
   };
 
-  const previousImage = () => {
+  const previousImageHandler = () => {
     if (selectedPhoto) {
       const previous = photos.find(
         (_, index) => index === photos.indexOf(selectedPhoto) - 1
@@ -78,7 +78,7 @@ const ImageModal = ({
     }
   };
 
-  const morePhotos = async () => {
+  const getMorePhotos = async () => {
     if (
       selectedPhoto &&
       photos.indexOf(selectedPhoto) === photos.length - 2 &&
@@ -119,7 +119,7 @@ const ImageModal = ({
       <div className={classnames(styles.content)}>
         <div className={classnames(styles.nextPageBtn, styles.leftSide)}>
           <IconButton
-            onClick={previousImage}
+            onClick={previousImageHandler}
             src='/icons/left-next-page.svg'
             alt='next-page-button'
             width={25}
@@ -141,7 +141,7 @@ const ImageModal = ({
         </div>
         <div className={classnames(styles.nextPageBtn, styles.rightSide)}>
           <IconButton
-            onClick={nextImage}
+            onClick={nextImageHandler}
             src='/icons/right-next-page.svg'
             alt='next-page-button'
             width={25}

@@ -1,10 +1,10 @@
 import classnames from "classnames";
-import { useRef, useState } from "react";
-import { useRouter } from "next/router";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-import Marker from "@/common/components/marker/marker.component";
+import Subtitle from "@/common/components/subtitle/subtitle.component";
 import Button from "@/common/components/button/button.component";
 import ImageModal from "@/common/components/full-screen-image-modal/full-screen-image-modal.component";
 
@@ -59,8 +59,6 @@ const RecentPhotosSection = () => {
   const [selectedImageId, setSelectedImageId] = useState<string>("");
   const [openImageFullScreenModal, setOpenImageFullScreenModal] =
     useState<boolean>(false);
-  const router = useRouter();
-  const scrollRef = useRef(null);
 
   const closeImageFullScreenModalHandler = () => {
     setOpenImageFullScreenModal(false);
@@ -81,7 +79,7 @@ const RecentPhotosSection = () => {
           <div className={styles.content}>
             <div className={styles.text}>
               <div className={styles.marker}>
-                <Marker text='PORTFOLIO' />
+                <Subtitle text='PORTFOLIO' />
               </div>
               <h2 className={classnames("title", "text-center")}>
                 NAJNOWSZE ZDJĘCIA
@@ -121,20 +119,18 @@ const RecentPhotosSection = () => {
               ))}
             </motion.div>
             <div className={styles.btn}>
-              <Button
-                theme='contained'
-                onClick={() => {
-                  router.push("/portfolio");
-                }}>
-                ZOBACZ MOJE PORTFOLIO
-                <Image
-                  className={styles.arrowIcon}
-                  src='/icons/arrow-white.svg'
-                  alt='arrow icon'
-                  height={20}
-                  width={20}
-                />
-              </Button>
+              <Link href='/portfolio'>
+                <Button theme='contained'>
+                  ZOBACZ MOJE PORTFOLIO
+                  <Image
+                    className={styles.arrowIcon}
+                    src='/icons/arrow-white.svg'
+                    alt='arrow icon'
+                    height={20}
+                    width={20}
+                  />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

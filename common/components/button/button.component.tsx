@@ -4,10 +4,9 @@ import { ReactNode } from "react";
 import styles from "./button.module.scss";
 
 type Props = {
-  theme: "contained" | "text" | "outline";
+  theme: "contained" | "outline";
   children: ReactNode;
-  // color: "string";
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Button = ({ theme, children, onClick }: Props) => {

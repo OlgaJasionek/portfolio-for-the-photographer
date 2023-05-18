@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import { getAllPhotos, getPhotosWithCategory } from "@/common/api/get-photos";
 import ImageModal from "@/common/components/full-screen-image-modal/full-screen-image-modal.component";
-import { lockScroll } from "@/common/helpers-function/lock-scroll";
+import { lockScroll } from "@/common/helpers/lock-scroll";
 import { useIsMount } from "@/common/hooks/useIsMount";
 import { Category, Photo } from "@/common/types/api.types";
 
@@ -46,8 +46,7 @@ const PortfolioComponent = ({ categories: initCategories, images }: Props) => {
 
   useEffect(() => {
     lockScroll(openImageFullScreenModal);
-  }),
-    [openImageFullScreenModal];
+  }, [openImageFullScreenModal]);
 
   const closeImageFullScreenModalHandler = () => {
     setOpenImageFullScreenModal(false);

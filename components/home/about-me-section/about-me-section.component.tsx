@@ -1,22 +1,20 @@
 import classnames from "classnames";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 import Button from "@/common/components/button/button.component";
-import Marker from "@/common/components/marker/marker.component";
+import Subtitle from "@/common/components/subtitle/subtitle.component";
 
 import styles from "./about-me-section.module.scss";
 
 const AboutMeSection = () => {
-  const router = useRouter();
-
   return (
     <div className={styles.wrapper}>
       <div className='container'>
         <div className={styles.content}>
           <motion.div
             className={styles.content}
-            initial={{ y: 200, opacity: 0.2 }}
+            initial={{ y: 100, opacity: 0.2 }}
             whileInView={{
               y: 0,
               opacity: 1,
@@ -24,31 +22,26 @@ const AboutMeSection = () => {
             }}
             viewport={{ once: true }}>
             <div className={styles.text}>
-              <Marker text='O MNIE' />
+              <Subtitle text='O MNIE' />
               <h1 className={classnames(styles.title, "text-xl")}>
                 WITAJ W MOIM ŚWIECIE!
               </h1>
               <div className={styles.description}>
                 <p>
-                  Mam na imię Natalia, aparatem chwytam chwile, które budują
-                  moje wspomnienia. Tym chciałabym podzielić się z Wami.
+                  Nazywam się Natalia. Moją pasją jest uwiecznianie chwil za
+                  pomocą fotografii, które tworzą niezapomniane wspomnienia.
                 </p>
               </div>
               <div className={styles.description}>
                 <p>
-                  Pozwólcie mi uwiecznić najpiękniejsze momenty Waszego życia,
-                  dajcie mi możliwość aby utrwalić je dla Was i zachować w
-                  pięknych kadrach, abyście mogli się nimi dzielić i przeżywać
-                  jeszcze raz.
+                  Pozwólcie mi utrwalić najpiękniejsze momenty Waszego życia
+                  oraz zachować je dla Was w pięknych kadrach, abyście mogli się
+                  nimi dzielić i przeżywać ponownie.
                 </p>
               </div>
-              <Button
-                theme='contained'
-                onClick={() => {
-                  router.push("/o-mnie");
-                }}>
-                POZNAJ MNIE LEPIEJ
-              </Button>
+              <Link href='/o-mnie'>
+                <Button theme='contained'>POZNAJ MNIE LEPIEJ</Button>
+              </Link>
             </div>
             <div className={styles.img}></div>
           </motion.div>

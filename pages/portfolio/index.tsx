@@ -15,10 +15,8 @@ export async function getStaticProps() {
       categories,
       images,
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10, // In seconds
+
+    revalidate: 10,
   };
 }
 
@@ -29,7 +27,7 @@ const Portfolio = ({ images, categories }: any) => {
         <title>Portfolio - Fotograf Natalia Jasionek</title>
         <meta
           name='description'
-          content='Fotograf Białystok i okolice, Fotografia portretowa, sesje rodzinne, sesje plenerowe, fotografia okolicznościowa, fotografia produktowa,,  usługi fotograficzne'
+          content='Fotograf Białystok i okolice, Fotografia portretowa, sesje rodzinne, sesje plenerowe, fotografia okolicznościowa, fotografia produktowa, usługi fotograficzne'
         />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />

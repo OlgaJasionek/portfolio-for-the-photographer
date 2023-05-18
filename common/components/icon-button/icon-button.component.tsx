@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import styles from "./icon-button.module.scss";
+
 type Props = {
   onClick: () => void;
   src: string;
@@ -12,15 +14,18 @@ type Props = {
 const IconButton = ({ onClick, src, alt, width, height, padding }: Props) => {
   return (
     <button
+      className={styles.iconBtn}
       style={{
-        backgroundColor: "transparent",
-        border: "none",
-        cursor: "pointer",
-        outline: "0",
         padding: `${padding}`,
       }}
       onClick={onClick}>
-      <Image src={src} alt={alt} width={width} height={height} />
+      <Image
+        className={styles.iconBtn}
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+      />
     </button>
   );
 };

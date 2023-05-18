@@ -1,28 +1,25 @@
+import Link from "next/link";
+
 import Button from "@/common/components/button/button.component";
-import { useRouter } from "next/router";
+
 import styles from "./redirect-to-the-offer.module.scss";
 
 const RedirectToOffer = () => {
-  const router = useRouter();
-
   return (
     <div className={styles.wrapper}>
       <div className='container'>
         <div className={styles.content}>
           <h3 className='title'>ZAPYTAJ O OFERTĘ!</h3>
           <p className={styles.text}>
-            Żeby przedstawić Wam najlepszą ofertę, chcę poznać Wasze
-            oczekiwania. Pełną ofertę przedstawię wam w prywatnym mailu.
-            Zachęcam też do rozpisania się w szczegółach, im więcej będę o Was
-            wiedzieć, tym lepszą ofertę będę mogła Wam zaproponować.
+            Aby móc zaproponować Wam najlepszą ofertę, chciałabym poznać Wasze
+            oczekiwania. Pełną gamę możliwości przedstawię Wam w prywatnej
+            wiadomości. Zachęcam również do szczegółowego opisania swoich
+            potrzeb. Im lepiej będę zaznajomiona z Waszymi preferencjami, tym
+            bardziej dopasowane rozwiązanie będę mogła Wam zaoferować.
           </p>
-          <Button
-            theme={"contained"}
-            onClick={() => {
-              router.push("/kontakt");
-            }}>
-            Zapytaj o ofertę
-          </Button>
+          <Link href={"/kontakt"}>
+            <Button theme={"contained"}>Zapytaj o ofertę</Button>
+          </Link>
         </div>
       </div>
     </div>

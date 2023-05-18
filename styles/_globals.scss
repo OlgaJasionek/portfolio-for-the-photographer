@@ -31,3 +31,13 @@ p {
 #__next {
   height: 100%;
 }
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: $main-dark-beige-font-color;
+  text-decoration: none;
+  transition: color 0.5s;
+}

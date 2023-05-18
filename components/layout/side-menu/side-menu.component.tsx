@@ -1,7 +1,6 @@
 import IconButton from "@/common/components/icon-button/icon-button.component";
-import { lockScroll } from "@/common/helpers-function/lock-scroll";
+import { lockScroll } from "@/common/helpers/lock-scroll";
 import classnames from "classnames";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
