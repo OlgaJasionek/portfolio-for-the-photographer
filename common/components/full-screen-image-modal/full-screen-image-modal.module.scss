@@ -10,6 +10,7 @@
   background-color: #000000db;
   animation-name: show;
   animation-duration: 0.5s;
+  animation-iteration-count: 1;
 
   @keyframes show {
     from {
@@ -58,6 +59,7 @@
 
 .nextPageBtn {
   position: absolute;
+  z-index: 1;
 }
 
 .rightSide {

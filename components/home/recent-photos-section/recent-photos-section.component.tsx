@@ -12,45 +12,45 @@ import styles from "./recent-photos-section.module.scss";
 
 const images = [
   {
-    id: "643d230133e722dd704739c3",
+    id: "646d1a729dd61d58abc210c0",
     formats: {
-      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/q_auto:best/v1681728256/_DSC8194-2_ejlizd.jpg",
-      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1681728256/_DSC8194-2_ejlizd.jpg",
+      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/v1684871787/_DSC8194-2_txzxok.jpg",
+      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1684871787/_DSC8194-2_txzxok.jpg",
     },
   },
   {
-    id: "643d241c33e722dd704739c9",
+    id: "646d30f609371e072c779323",
     formats: {
-      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/q_auto:best/v1681728325/_DSC1011-2_khjhee.jpg",
-      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1681728325/_DSC1011-2_khjhee.jpg",
+      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/v1684877533/_DSC1012_lvu8ab.jpg",
+      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1684877533/_DSC1012_lvu8ab.jpg",
     },
   },
   {
-    id: "643d23a233e722dd704739c5",
+    id: "646d2d7b674af5c2e4e56853",
     formats: {
-      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/q_auto:best/v1681728414/JDR_0944_mwhwxs.jpg",
-      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1681728414/JDR_0944_mwhwxs.jpg",
+      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/v1684876440/_DSC2374_i2qhnm.jpg",
+      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1684876440/_DSC2374_i2qhnm.jpg",
     },
   },
   {
-    id: "643d23d133e722dd704739c6",
+    id: "646d2b8b674af5c2e4e5684e",
     formats: {
-      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/q_auto:best/v1681728455/IMG_0011_app9iu.jpg",
-      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1681728455/IMG_0011_app9iu.jpg",
+      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/v1684876160/_DSC7848_ijngom.jpg",
+      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1684876160/_DSC7848_ijngom.jpg",
     },
   },
   {
-    id: "643d23ec33e722dd704739c7",
+    id: "646d31e509371e072c77932c",
     formats: {
-      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/q_auto:best/v1681728486/karo_jy8lws.jpg",
-      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1681728486/karo_jy8lws.jpg",
+      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/v1684877757/JDR_1435_tocnec.jpg",
+      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1684877757/JDR_1435_tocnec.jpg",
     },
   },
   {
-    id: "643d241133e722dd704739c8",
+    id: "646d1a9c9dd61d58abc210c1",
     formats: {
-      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/q_auto:best/v1681728528/oliwia_yklct9.jpg",
-      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1681728528/oliwia_yklct9.jpg",
+      full: "https://res.cloudinary.com/dfhpug7jv/image/upload/v1684871834/JDR_0908-Edit_gykqxv.jpg",
+      md: "https://res.cloudinary.com/dfhpug7jv/image/upload/t_Instagram%20feed/v1684871834/JDR_0908-Edit_gykqxv.jpg",
     },
   },
 ];
@@ -97,7 +97,7 @@ const RecentPhotosSection = () => {
                 hidden: { opacity: 0, transition: { when: "afterChildren" } },
               }}
               className={styles.photos}>
-              {images.map((image, index) => (
+              {images.map(image => (
                 <motion.div
                   variants={{
                     visible: { opacity: 1 },
@@ -118,20 +118,18 @@ const RecentPhotosSection = () => {
                 </motion.div>
               ))}
             </motion.div>
-            <div className={styles.btn}>
-              <Link href='/portfolio'>
-                <Button theme='contained'>
-                  ZOBACZ MOJE PORTFOLIO
-                  <Image
-                    className={styles.arrowIcon}
-                    src='/icons/arrow-white.svg'
-                    alt='arrow icon'
-                    height={20}
-                    width={20}
-                  />
-                </Button>
-              </Link>
-            </div>
+            <Link className={styles.btn} href='/portfolio'>
+              <Button theme='contained'>
+                ZOBACZ MOJE PORTFOLIO
+                <Image
+                  className={styles.arrowIcon}
+                  src='/icons/arrow-white.svg'
+                  alt='arrow icon'
+                  height={20}
+                  width={20}
+                />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

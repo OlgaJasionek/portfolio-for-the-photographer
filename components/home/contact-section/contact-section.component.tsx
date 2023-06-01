@@ -5,8 +5,10 @@ import Button from "@/common/components/button/button.component";
 import Subtitle from "@/common/components/subtitle/subtitle.component";
 
 import styles from "./contact-section.module.scss";
+import { useRouter } from "next/router";
 
 const ContactSection = () => {
+  const router = useRouter();
   return (
     <div>
       <div className={styles.wrapper}>
@@ -25,12 +27,11 @@ const ContactSection = () => {
                 wątpliwości oraz prześlę pełną ofertę. Skontaktuj się ze mną 🙂
               </p>
             </div>
-
-            <div className={styles.btn}>
-              <Link href='/kontakt'>
-                <Button theme='contained'>NAPISZ DO MNIE</Button>
-              </Link>
-            </div>
+            <Link className={styles.btn} href='/kontakt'>
+              <Button onClick={() => router.push("/kontakt")} theme='contained'>
+                NAPISZ DO MNIE
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
